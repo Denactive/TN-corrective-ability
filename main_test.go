@@ -73,3 +73,33 @@ func TestIntToBytes(t *testing.T) {
 		})
 	}
 }
+
+func TestImposeError(t *testing.T) {
+	type args struct {
+		a uint64
+		e uint64
+	}
+	tests := []struct {
+		name string
+		args args
+		want uint64
+	}{
+		{"100_&_1", args{4, 1}, 5},
+		{"100_&_2", args{4, 2}, 6},
+		{"100_&_3", args{4, 3}, 7},
+		{"100_&_4", args{4, 4}, 0},
+		{"100_&_5", args{4, 5}, 1},
+		{"100_&_6", args{4, 6}, 2},
+		{"100_&_7", args{4, 7}, 3},
+		{"1001_&_1", args{17, 1}, 16},
+		{"1_&_1001", args{1, 17}, 16},
+		{"0_&_1001", args{0, 17}, 17},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := ImposeError(tt.args.a, tt.args.e); got != tt.want {
+				t.Errorf("ImposeError() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

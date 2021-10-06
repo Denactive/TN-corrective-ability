@@ -29,24 +29,35 @@
         <div class="row text-center">
             <h1>Симптомы</h1>
         </div>
-        <div class="row text-left" style="border-bottom: 1px solid #ccc;">
-            <div class="col-1">
-                Симптом
+        <div class="container">
+            <div class="row text-left" style="border-bottom: 1px solid #ccc;">
+                <div class="col-1">
+                    Симптом
+                </div>
+                <div class="col-11">
+                    Вектор ошибки е
+                </div>
             </div>
-            <div class="col-11">
-                Вектор ошибки е
-            </div>
+            {{ range $class, $list := . }}
+                {{if (ne $class 0)}}
+                    <div class="row mt-5 mb-2" style="border-bottom: 1px solid #ccc;">
+                        <div class="col-1 text-start">
+                            <h4>класс {{ $class }}</h4>
+                        </div>
+                    </div>
+                    {{ range $symptom, $error := . }}
+                    <div class="row mt-3" style="border-bottom: 1px solid #ccc;">
+                        <div class="col-1 text-center">
+                            {{ $symptom }}
+                        </div>
+                        <div class="col-11 text-left mb-3">
+                            {{ $error }}
+                        </div>
+                    </div>
+                    {{end}}
+                {{end}}
+            {{end}}
         </div>
-        {{ range $key, $value := . }}
-        <div class="row mt-3" style="border-bottom: 1px solid #ccc;">
-            <div class="col-1 text-center">
-                {{$key}}
-            </div>
-            <div class="col-11 text-left mb-3">
-                {{ $value }}
-            </div>
-        </div>
-        {{end}}
     </main>
 
     <footer class="mt-auto text-white-50">
