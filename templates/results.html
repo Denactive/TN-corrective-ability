@@ -12,20 +12,20 @@
 </head>
 
 <body class="d-flex h-100 text-white bg-dark">
-<div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
+<div class="d-flex w-100 h-100 p-3 mx-auto flex-column" style="min-height: 100vh; justify-content: space-between;">
     <header class="mb-auto">
         <div>
             <h3 class="float-md-start mb-0">Turchin Denis IU5-55</h3>
             <nav class="nav nav-masthead justify-content-center float-md-end">
                 <a class="nav-link" aria-current="page" href="/">Ошибки</a>
-                <a class="nav-link" href="/symptoms">Симптомы</a>
-                <a class="nav-link" href="/symptoms/array">Ошибки и Симптомы</a>
+                <a class="nav-link" href="/syndromes">Синдромы</a>
+                <a class="nav-link" href="/syndromes/array">Ошибки и их Синдромы</a>
                 <a class="nav-link active" href="/results">Результаты</a>
             </nav>
         </div>
     </header>
 
-    <main class="px-3">
+    <main class="px-3 container h-100">
         <div class="row text-center">
             <h1>Результаты</h1>
         </div>
@@ -33,7 +33,7 @@
             <thead></thead>
             <tbody>
             <tr>
-                <th scope="row">Кратность</th>
+                <th scope="row">Кратность ошибки</th>
                 {{ range $key, $_ := . }}
                 {{if (ne $key 0)}}
                 <td>{{ $key }}</td>
@@ -41,10 +41,26 @@
                 {{end}}
             </tr>
             <tr>
-                <th scope="row">Ck, %</th>
-                {{ range $key, $value := . }}-->
+                <th scope="row">Корректирующая способность, %</th>
+                {{ range $key, $value := . }}
                 {{if (ne $key 0)}}
-                <td>{{ $value }}</td>
+                <td><strong>{{ $value.CorrectiveAbility }}</strong></td>
+                {{end}}
+                {{end}}
+            </tr>
+            <tr>
+                <th scope="row">Скорректированные ошибки</th>
+                {{ range $key, $value := . }}
+                {{if (ne $key 0)}}
+                <td>{{ $value.Count }}</td>
+                {{end}}
+                {{end}}
+            </tr>
+            <tr>
+                <th scope="row">Общее число ошибок</th>
+                {{ range $key, $value := . }}
+                {{if (ne $key 0)}}
+                <td>{{ $value.ClassSize }}</td>
                 {{end}}
                 {{end}}
             </tr>

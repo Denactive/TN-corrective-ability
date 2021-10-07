@@ -18,8 +18,8 @@
             <h3 class="float-md-start mb-0">Turchin Denis IU5-55</h3>
             <nav class="nav nav-masthead justify-content-center float-md-end">
                 <a class="nav-link" aria-current="page" href="/">Ошибки</a>
-                <a class="nav-link active" href="/symptoms">Симптомы</a>
-                <a class="nav-link" href="/symptoms/array">Ошибки и Симптомы</a>
+                <a class="nav-link " href="/syndromes">Синдромы</a>
+                <a class="nav-link active" href="/syndromes/array">Ошибки и их Синдромы</a>
                 <a class="nav-link" href="/results">Результаты</a>
             </nav>
         </div>
@@ -27,35 +27,26 @@
 
     <main class="px-3">
         <div class="row text-center">
-            <h1>Симптомы</h1>
+            <h1>Синдромы</h1>
         </div>
         <div class="container">
-            <div class="row text-left" style="border-bottom: 1px solid #ccc;">
-                <div class="col-1">
-                    Симптом
+            <div class="row" style="border-bottom: 1px solid #ccc;">
+                <div class="col-2 text-end">
+                    <strong>Вектор ошибки</strong>
                 </div>
-                <div class="col-11">
-                    Вектор ошибки е
+                <div class="col-10 text-left">
+                    <strong>Синдром</strong>
                 </div>
             </div>
-            {{ range $class, $list := . }}
-                {{if (ne $class 0)}}
-                    <div class="row mt-5 mb-2" style="border-bottom: 1px solid #ccc;">
-                        <div class="col-1 text-start">
-                            <h4>класс {{ $class }}</h4>
-                        </div>
-                    </div>
-                    {{ range $symptom, $error := . }}
-                    <div class="row mt-3" style="border-bottom: 1px solid #ccc;">
-                        <div class="col-1 text-center">
-                            {{ $symptom }}
-                        </div>
-                        <div class="col-11 text-left mb-3">
-                            {{ $error }}
-                        </div>
-                    </div>
-                    {{end}}
-                {{end}}
+            {{ range $key, $value := . }}
+            <div class="row mt-3" style="border-bottom: 1px solid #ccc;">
+                <div class="col-2 text-end">
+                    {{ $key }}
+                </div>
+                <div class="col-10 text-left mb-3">
+                    {{ $value }}
+                </div>
+            </div>
             {{end}}
         </div>
     </main>

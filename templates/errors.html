@@ -18,8 +18,8 @@
             <h3 class="float-md-start mb-0">Turchin Denis IU5-55</h3>
             <nav class="nav nav-masthead justify-content-center float-md-end">
                 <a class="nav-link active" aria-current="page" href="/">Ошибки</a>
-                <a class="nav-link" href="/symptoms">Симптомы</a>
-                <a class="nav-link" href="/symptoms/array">Ошибки и Симптомы</a>
+                <a class="nav-link" href="/syndromes">Синдромы</a>
+                <a class="nav-link" href="/syndromes/array">Ошибки и их Синдромы</a>
                 <a class="nav-link" href="/results">Результаты</a>
             </nav>
         </div>
@@ -29,12 +29,12 @@
         <div class="row text-center">
             <h1>Ошибки</h1>
         </div>
-        <div class="row text-left" style="border-bottom: 1px solid #ccc;">
-            <div class="col-1">
-                Кратность
+        <div class="row " style="border-bottom: 1px solid #ccc;">
+            <div class="col-1  text-center">
+                <strong>Кратность</strong>
             </div>
-            <div class="col-11">
-                вектора ошибок е данной кратности
+            <div class="col-11 text-left">
+                <strong>Вектора ошибок данной кратности</strong>
             </div>
         </div>
         {{ range $key, $value := . }}
